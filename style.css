@@ -879,3 +879,36 @@ button:hover {
 }
 
 
+
+
+/* The Hunt */
+#hunt-page.hidden { display: none; }
+.hunt-subtitle, #hunt-count { color: #999; }
+#hunt-search { width: 100%; padding: 14px; margin: 24px 0 10px; background: #242424; border: 1px solid #444; border-radius: 8px; color: #fff; font-size: 15px; }
+#hunt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 24px; margin-top: 25px; }
+.hunt-card { min-width: 0; }
+.hunt-card > img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; background: #333; }
+.hunt-card h3 { margin: 12px 0 5px; font-size: 16px; }
+.hunt-card p { color: #aaa; font-size: 14px; margin: 5px 0; }
+.hunt-card label { display: block; margin-top: 12px; color: #aaa; font-size: 12px; }
+.hunt-card select, .hunt-card input { display: block; width: 100%; padding: 9px; margin-top: 5px; background: #242424; color: #fff; border: 1px solid #444; border-radius: 6px; }
+.hunt-actions { display: flex; gap: 8px; margin-top: 12px; }
+.hunt-actions button { flex: 1; padding: 10px 6px; }
+.hunt-remove { background: #303030; color: #ddd; }
+.crate-navigation { overflow-x: auto; }
+.nav-tab { white-space: nowrap; }
+@media (max-width: 600px) { #hunt-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; } .hunt-actions { flex-direction: column; } }
+
+/* Shared heading layout for all three Crate tabs */
+.page-heading { min-width: 0; margin-bottom: 32px; }
+.page-heading .section-eyebrow { color: #e8a44a; font-size: 12px; font-weight: bold; letter-spacing: 2px; margin: 0 0 12px; }
+.page-heading h2 { font-size: 32px; font-weight: 700; line-height: 1.2; margin: 0 0 16px; }
+.page-heading > p:last-child { color: #999; font-size: 16px; line-height: 1.5; margin: 0; }
+.collection-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 32px; }
+.collection-header .page-heading { margin-bottom: 0; }
+.collection-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+@media (max-width: 700px) {
+  .collection-header { flex-direction: column; align-items: stretch; }
+  .collection-actions { flex-wrap: wrap; justify-content: flex-start; }
+  .page-heading h2 { font-size: 28px; }
+}

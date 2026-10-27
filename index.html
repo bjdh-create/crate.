@@ -22,15 +22,31 @@
         My Collection
     </button>
 
+    <button id="hunt-tab" class="nav-tab" type="button">The Hunt</button>
+
     <button id="listening-tab" class="nav-tab" type="button">
         The Listening Room
     </button>
 </nav>
 
+<section id="hunt-page" class="hidden">
+  <div class="collection-header">
+    <div class="page-heading">
+      <p class="section-eyebrow">THE HUNT</p>
+      <h2>Records worth searching for.</h2>
+      <p>Your wishlist for the next record-store trip.</p>
+    </div>
+    <button id="add-hunt" type="button">+ Add to Hunt</button>
+  </div>
+  <input type="search" id="hunt-search" placeholder="Search your wishlist..." aria-label="Search wishlist">
+  <p id="hunt-count"></p>
+  <div id="hunt-grid"></div>
+</section>
+
 <!-- Listening Room -->
 <section id="listening-room" class="hidden">
 
-    <div class="listening-heading">
+    <div class="page-heading">
         <p class="section-eyebrow">THE LISTENING ROOM</p>
         <h2>Find your next record.</h2>
         <p>Something from your shelf, for whatever mood you're in.</p>
@@ -60,7 +76,11 @@
 <section id="collection-page">  
 
 <div class="collection-header">
-    <h2>My Collection</h2>
+    <div class="page-heading">
+        <p class="section-eyebrow">MY COLLECTION</p>
+        <h2>Your record collection.</h2>
+        <p>Every album on your shelf, all in one place.</p>
+    </div>
 
     
 <div class="collection-actions">
@@ -166,7 +186,7 @@
 <div id="search-modal" class="modal hidden">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>Add an Album</h2>
+            <h2 id="search-modal-title">Add an Album</h2>
             <button id="close-modal" type="button">×</button>
         </div>
 

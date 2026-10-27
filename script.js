@@ -29,6 +29,14 @@ let collection = JSON.parse(
 );
 
 let selectedAlbum = null;
+let hunt = JSON.parse(localStorage.getItem("crateHunt") || "[]");
+let searchDestination = "collection";
+let foundAlbumId = null;
+function saveHunt() {
+    localStorage.setItem("crateHunt", JSON.stringify(hunt));
+    renderHunt();
+}
+
 
 
 // ==========================================
@@ -53,6 +61,7 @@ function closeSearchModal() {
 
 function closeRatingModal() {
     ratingModal.classList.add("hidden");
+    foundAlbumId = null;
 }
 
 
@@ -61,6 +70,9 @@ function closeRatingModal() {
 // ==========================================
 
 addAlbumButton.addEventListener("click", () => {
+    searchDestination = "collection";
+    document.getElementById("search-modal-title").textContent = "Add an Album";
+    searchResults.innerHTML = "";
     searchModal.classList.remove("hidden");
     albumSearchInput.focus();
 });
@@ -293,13 +305,13 @@ function displaySearchResults(albums) {
         result.append(cover, info, arrow);
 
         result.addEventListener("click", () => {
-            selectAlbum(album);
+            chooseSearchAlbum(album);
         });
 
         result.addEventListener("keydown", (event) => {
             if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
-                selectAlbum(album);
+                chooseSearchAlbum(album);
             }
         });
 
@@ -311,6 +323,30 @@ function displaySearchResults(albums) {
 // ==========================================
 // SELECT AN ALBUM
 // ==========================================
+
+function chooseSearchAlbum(album) {
+    if (searchDestination === "hunt") {
+        if (hunt.some(item => item.id === album.id) || collection.some(item => item.id === album.id)) {
+            alert("This album is already in your wishlist or collection.");
+            return;
+        }
+        hunt.push({
+            id: album.id,
+            title: album.title,
+            artist: getAlbumArtist(album),
+            year: album["first-release-date"]?.slice(0, 4) || "Unknown",
+            cover: getAlbumCover(album.id),
+            priority: "Medium",
+            targetPrice: ""
+        });
+        saveHunt();
+        closeSearchModal();
+        showCratePage("hunt");
+        return;
+    }
+    foundAlbumId = null;
+    selectAlbum(album);
+}
 
 function selectAlbum(album) {
     selectedAlbum = album;
@@ -397,6 +433,12 @@ const albumToSave = {
         JSON.stringify(collection)
     );
 
+    if (foundAlbumId) {
+        hunt = hunt.filter(item => item.id !== foundAlbumId);
+        foundAlbumId = null;
+        saveHunt();
+        showCratePage("collection");
+    }
     closeRatingModal();
     selectedAlbum = null;
 
@@ -986,21 +1028,112 @@ let selectedVibe = null;
 let lastPickedAlbumId = null;
 
 // Navigation
-collectionTab.addEventListener("click", () => {
-    collectionPage.classList.remove("hidden");
-    listeningRoom.classList.add("hidden");
+const huntTab = document.getElementById("hunt-tab");
+const huntPage = document.getElementById("hunt-page");
+function showCratePage(page) {
+    collectionPage.classList.toggle("hidden", page !== "collection");
+    listeningRoom.classList.toggle("hidden", page !== "listening");
+    huntPage.classList.toggle("hidden", page !== "hunt");
+    collectionTab.classList.toggle("active", page === "collection");
+    listeningTab.classList.toggle("active", page === "listening");
+    huntTab.classList.toggle("active", page === "hunt");
+}
+collectionTab.addEventListener("click", () => showCratePage("collection"));
+listeningTab.addEventListener("click", () => showCratePage("listening"));
+huntTab.addEventListener("click", () => showCratePage("hunt"));
 
-    collectionTab.classList.add("active");
-    listeningTab.classList.remove("active");
+document.getElementById("add-hunt").addEventListener("click", () => {
+    searchDestination = "hunt";
+    document.getElementById("search-modal-title").textContent = "Add to The Hunt";
+    albumSearchInput.value = "";
+    searchResults.innerHTML = "";
+    searchModal.classList.remove("hidden");
+    albumSearchInput.focus();
 });
+document.getElementById("hunt-search").addEventListener("input", renderHunt);
 
-listeningTab.addEventListener("click", () => {
-    collectionPage.classList.add("hidden");
-    listeningRoom.classList.remove("hidden");
-
-    listeningTab.classList.add("active");
-    collectionTab.classList.remove("active");
-});
+function renderHunt() {
+    const grid = document.getElementById("hunt-grid");
+    const query = document.getElementById("hunt-search").value.toLowerCase().trim();
+    const visible = hunt.filter(a => (a.title + " " + a.artist).toLowerCase().includes(query));
+    document.getElementById("hunt-count").textContent =
+        `Showing ${visible.length} of ${hunt.length} wanted albums`;
+    grid.replaceChildren();
+    if (!visible.length) {
+        const empty = document.createElement("p");
+        empty.className = "empty-message";
+        empty.textContent = hunt.length ? "No matching albums." : "Your hunt starts here. Add a record you want to find.";
+        grid.append(empty);
+        return;
+    }
+    visible.forEach(album => {
+        const card = document.createElement("article");
+        card.className = "hunt-card";
+        const cover = document.createElement("img");
+        cover.src = album.cover;
+        cover.alt = album.title + " cover";
+        cover.loading = "lazy";
+        cover.onerror = () => { cover.onerror = null; cover.removeAttribute("src"); };
+        const title = document.createElement("h3");
+        title.textContent = album.title;
+        const artist = document.createElement("p");
+        artist.textContent = album.artist;
+        const year = document.createElement("p");
+        year.textContent = album.year;
+        const priorityLabel = document.createElement("label");
+        priorityLabel.textContent = "Priority";
+        const priority = document.createElement("select");
+        ["High", "Medium", "Low"].forEach(level => {
+            const option = document.createElement("option");
+            option.value = level;
+            option.textContent = level;
+            priority.append(option);
+        });
+        priority.value = album.priority || "Medium";
+        priority.addEventListener("change", () => { album.priority = priority.value; saveHunt(); });
+        priorityLabel.append(priority);
+        const priceLabel = document.createElement("label");
+        priceLabel.textContent = "Target price ($)";
+        const price = document.createElement("input");
+        price.type = "number";
+        price.min = "0";
+        price.step = "0.01";
+        price.placeholder = "Optional";
+        price.value = album.targetPrice ?? "";
+        price.addEventListener("change", () => {
+            album.targetPrice = price.value === "" ? "" : String(Math.max(0, Number(price.value) || 0));
+            saveHunt();
+        });
+        priceLabel.append(price);
+        const found = document.createElement("button");
+        found.type = "button";
+        found.textContent = "Found It!";
+        found.addEventListener("click", () => {
+            foundAlbumId = album.id;
+            selectAlbum({
+                id: album.id,
+                title: album.title,
+                "artist-credit": [{name: album.artist}],
+                "first-release-date": album.year === "Unknown" ? "" : album.year
+            });
+        });
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "hunt-remove";
+        remove.textContent = "Remove";
+        remove.addEventListener("click", () => {
+            if (!confirm(`Remove "${album.title}" from The Hunt?`)) return;
+            hunt = hunt.filter(a => a.id !== album.id);
+            saveHunt();
+        });
+        const actions = document.createElement("div");
+        actions.className = "hunt-actions";
+        actions.append(found, remove);
+        card.append(cover, title, artist, year, priorityLabel, priceLabel, actions);
+        grid.append(card);
+    });
+}
+renderHunt();
 
 // Select a mood
 vibeButtons.forEach(button => {
