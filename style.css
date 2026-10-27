@@ -843,3 +843,39 @@ button:hover {
     border-radius: 3px;
 }
 
+
+/* Favourite option when adding an album */
+
+.add-favourite {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-favourite input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.add-favourite-heart {
+    font-size: 30px;
+    color: #999;
+    line-height: 1;
+}
+
+.add-favourite input:checked + .add-favourite-heart {
+    color: #e8a44a;
+}
+
+.add-favourite input:focus-visible + .add-favourite-heart {
+    outline: 2px solid #e8a44a;
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+

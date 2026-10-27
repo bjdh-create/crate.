@@ -326,6 +326,8 @@ function selectAlbum(album) {
     selectedAlbumDisplay.append(title, artist);
 
     ratingInput.value = "8";
+    document.getElementById("new-album-favourite").checked = false;
+document.querySelector(".add-favourite-heart").textContent = "♡";
 
 // Reset vibes for each new album
 document.querySelectorAll(
@@ -374,18 +376,19 @@ const selectedMoods = Array.from(
     )
 ).map(checkbox => checkbox.value);
 
-    const albumToSave = {
-        id: selectedAlbum.id,
-        title: selectedAlbum.title,
-        artist: getAlbumArtist(selectedAlbum),
-        year:
-            selectedAlbum["first-release-date"]?.slice(0, 4) || "",
-    
-genre: "Unknown",
-moods: selectedMoods,
-        cover: getAlbumCover(selectedAlbum.id),
-        rating: rating
-    };
+const isFavourite = document.getElementById("new-album-favourite").checked;
+
+const albumToSave = {
+    id: selectedAlbum.id,
+    title: selectedAlbum.title,
+    artist: getAlbumArtist(selectedAlbum),
+    year: selectedAlbum["first-release-date"]?.slice(0, 4) || "Unknown",
+    genre: "Unknown",
+    cover: getAlbumCover(selectedAlbum.id),
+    rating: rating,
+    moods: selectedMoods,
+    favourite: isFavourite
+};
 
     collection.push(albumToSave);
 
