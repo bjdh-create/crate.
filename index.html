@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crate | My Album Collection</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>crate.</h1>
+        <p>Your personal music collection</p>
+    </header>
+
+    <main>
+
+<!-- Main Navigation -->
+<nav class="crate-navigation">
+    <button id="collection-tab" class="nav-tab active" type="button">
+        My Collection
+    </button>
+
+    <button id="listening-tab" class="nav-tab" type="button">
+        The Listening Room
+    </button>
+</nav>
+
+<!-- Listening Room -->
+<section id="listening-room" class="hidden">
+
+    <div class="listening-heading">
+        <p class="section-eyebrow">THE LISTENING ROOM</p>
+        <h2>Find your next record.</h2>
+        <p>Something from your shelf, for whatever mood you're in.</p>
+    </div>
+
+    <div class="vibe-panel">
+        <h3>What's your vibe?</h3>
+
+        <div class="vibe-grid">
+            <button type="button" class="vibe-button" data-vibe="Melancholy">🌧️ Melancholy</button>
+            <button type="button" class="vibe-button" data-vibe="Chill">☕ Chill</button>
+            <button type="button" class="vibe-button" data-vibe="Energetic">⚡ Energetic</button>
+            <button type="button" class="vibe-button" data-vibe="Dreamy">🌙 Dreamy</button>
+            <button type="button" class="vibe-button" data-vibe="Dark">🌑 Dark</button>
+            <button type="button" class="vibe-button" data-vibe="Feel Good">☀️ Feel Good</button>
+        </div>
+
+        <button id="pick-record" type="button" disabled>
+            Pick a Record
+        </button>
+
+        <div id="vibe-result" aria-live="polite"></div>
+    </div>
+
+</section>
+
+<section id="collection-page">  
+
+<div class="collection-header">
+    <h2>My Collection</h2>
+
+    
+<div class="collection-actions">
+
+    <div class="tools-dropdown">
+        <button id="tools-toggle" type="button">
+            Archive ▾
+        </button>
+
+        <div id="tools-menu" class="tools-menu hidden">
+            <button id="export-collection" type="button">
+                ↓ Export Backup
+            </button>
+
+            <button id="import-collection" type="button">
+                ↑ Import Backup
+            </button>
+        </div>
+    </div>
+
+    <input
+        type="file"
+        id="import-file"
+        accept=".json,application/json"
+        hidden
+    >
+
+    <button id="add-album" type="button">
+        + Add Album
+    </button>
+
+</div>
+
+</div>
+
+
+<!-- Collection Filters -->
+<section class="collection-filters">
+
+    <input
+        type="search"
+        id="collection-search"
+        placeholder="Search your collection..."
+    >
+
+    <div class="filter-row">
+
+        <select id="genre-filter">
+            <option value="all">All Genres</option>
+        </select>
+
+        <select id="decade-filter">
+            <option value="all">All Decades</option>
+        </select>
+
+        <select id="rating-filter">
+            <option value="0">All Ratings</option>
+            <option value="9">9+ Stars</option>
+            <option value="8">8+ Stars</option>
+            <option value="7">7+ Stars</option>
+            <option value="6">6+ Stars</option>
+            <option value="5">5+ Stars</option>
+        </select>
+
+        <select id="sort-filter">
+            <option value="artist">Artist A–Z</option>
+            <option value="title">Album A–Z</option>
+            <option value="newest">Newest Release</option>
+            <option value="oldest">Oldest Release</option>
+            <option value="highest">Highest Rated</option>
+            <option value="lowest">Lowest Rated</option>
+        </select>
+
+
+    </div>
+
+   
+<div class="filter-footer">
+    <span id="collection-count"></span>
+
+    <div class="filter-footer-actions">
+        <label class="favourites-heart" title="Favourites Only">
+            <input type="checkbox" id="favourites-filter">
+            <span class="heart-icon"></span>
+        </label>
+
+        <button id="clear-filters" type="button">
+            Clear Filters
+        </button>
+    </div>
+</div>
+
+
+</section>
+
+        <div id="album-grid">
+            <p class="empty-message">
+                Your collection is empty.
+            </p>
+        </div>
+        
+<!-- Album Search Window -->
+<div id="search-modal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add an Album</h2>
+            <button id="close-modal" type="button">×</button>
+        </div>
+
+        <input
+            type="text"
+            id="album-search"
+            placeholder="Search for an artist or album..."
+        >
+
+        <button id="search-button" type="button">
+            Search
+        </button>
+
+        <div id="search-results"></div>
+    </div>
+</div>
+
+<!-- Album Rating Window -->
+<div id="rating-modal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add to Crate</h2>
+            <button id="close-rating" type="button">×</button>
+        </div>
+
+        <div id="selected-album"></div>
+
+        <label for="album-rating">Your Rating (1–10)</label>
+        <input
+            type="number"
+            id="album-rating"
+            min="1"
+            max="10"
+            step="0.5"
+            value="8"
+        >
+        
+<div class="album-vibes">
+    <p>Choose Your Vibes</p>
+    <p class="vibe-hint">Select as many as you like.</p>
+
+    <div class="album-vibe-options">
+        <label><input type="checkbox" value="Melancholy"> 🌧️ Melancholy</label>
+        <label><input type="checkbox" value="Chill"> ☕ Chill</label>
+        <label><input type="checkbox" value="Energetic"> ⚡ Energetic</label>
+        <label><input type="checkbox" value="Dreamy"> 🌙 Dreamy</label>
+        <label><input type="checkbox" value="Dark"> 🌑 Dark</label>
+        <label><input type="checkbox" value="Feel Good"> ☀️ Feel Good</label>
+    </div>
+</div>
+
+
+        <button id="save-album" type="button">
+            Save to Collection
+        </button>
+    </div>
+</div>
+</section>
+
+    </main>
+</body>
+</html>
