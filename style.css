@@ -1102,16 +1102,17 @@ a:hover {
     display: none !important;
 }
 
-/* Fix blue text on mobile */
-a,
-a:visited {
-    color: inherit;
-}
-
-/* Prevent iPhone from making detected text blue */
-a[x-apple-data-detectors],
-.apple-data-detectors,
-.apple-data-detectors a {
+/* Fix blue link text inside buttons on mobile */
+button a,
+button a:link,
+button a:visited,
+a.btn,
+a.btn:visited {
     color: inherit !important;
     text-decoration: none !important;
+}
+
+/* Stop iPhone from applying its default blue text */
+button {
+    -webkit-text-fill-color: currentColor;
 }
