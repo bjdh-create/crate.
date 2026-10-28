@@ -18,7 +18,7 @@ header {
 header h1 {
     margin: 0;
     font-size: 36px;
-    color: #e8a44a;
+    color: #008b8b;
 }
 
 header p {
@@ -40,7 +40,7 @@ main {
 }
 
 button {
-    background-color: #e8a44a;
+    background-color: #008b8b;
     border: none;
     border-radius: 6px;
     padding: 12px 20px;
@@ -131,7 +131,7 @@ button:hover {
 
 #album-search:focus {
     outline: none;
-    border-color: #e8a44a;
+    border-color: #008b8b;
 }
 
 #search-button {
@@ -154,7 +154,7 @@ button:hover {
 }
 
 .search-result:hover {
-    border-color: #e8a44a;
+    border-color: #008b8b;
 }
 
 .search-result h3 {
@@ -193,7 +193,7 @@ button:hover {
 
 .search-result:hover {
     background: #353535;
-    border-color: #e8a44a;
+    border-color: #008b8b;
 }
 
 .search-cover {
@@ -229,7 +229,7 @@ button:hover {
 
 
 .result-arrow {
-    color: #e8a44a;
+    color: #008b8b;
     font-size: 28px;
     font-weight: 300;
     margin-left: auto;
@@ -253,6 +253,8 @@ button:hover {
 .album-card h3 {
     font-size: 16px;
     margin: 12px 0 5px;
+    color: #ffffff;
+
 }
 
 .album-card p {
@@ -262,7 +264,7 @@ button:hover {
 }
 
 .album-card .album-card-rating {
-    color: #e8a44a;
+    color: #008b8b;
     font-weight: bold;
 }
 
@@ -328,7 +330,7 @@ button:hover {
 .filter-row select:focus,
 #collection-search:focus {
     outline: none;
-    border-color: #e8a44a;
+    border-color: #008b8b;
 }
 
 .filter-footer {
@@ -343,7 +345,7 @@ button:hover {
 
 #clear-filters {
     background: transparent;
-    color: #e8a44a;
+    color: #008b8b;
     padding: 8px;
 }
 
@@ -377,7 +379,7 @@ button:hover {
 #export-collection:hover,
 #import-collection:hover {
     background: #424242;
-    border-color: #e8a44a;
+    border-color: #008b8b;
 }
 
 @media (max-width: 700px) {
@@ -405,7 +407,7 @@ button:hover {
 }
 
 #tools-toggle:hover {
-    border-color: #e8a44a;
+    border-color: #008b8b;
 }
 
 .tools-menu {
@@ -438,7 +440,7 @@ button:hover {
 
 .tools-menu button:hover {
     background: #353535 !important;
-    color: #e8a44a !important;
+    color: #008b8b !important;
 }
 
 
@@ -470,7 +472,7 @@ button:hover {
 }
 
 .album-options-button:hover {
-    background: #e8a44a;
+    background: #008b8b;
     color: #141414;
 }
 
@@ -527,7 +529,7 @@ button:hover {
 
 .album-options-button:hover {
     background: #303030;
-    color: #e8a44a;
+    color: #008b8b;
 }
 
 .album-options-menu {
@@ -539,7 +541,7 @@ button:hover {
 }
 
 .favourite-album {
-    color: #e8a44a !important;
+    color: #008b8b !important;
 }
 
 .remove-album {
@@ -559,7 +561,7 @@ button:hover {
 }
 
 .edit-rating:hover {
-    color: #e8a44a !important;
+    color: #008b8b !important;
 }
 
 
@@ -575,16 +577,16 @@ button:hover {
     border: 1px solid #444;
     border-radius: 8px;
     cursor: pointer;
-    color: #e8a44a;
+    color: #008b8b;
     font-size: 14px;
 }
 
 .favourites-filter:hover {
-    border-color: #e8a44a;
+    border-color: #008b8b;
 }
 
 .favourites-filter input {
-    accent-color: #e8a44a;
+    accent-color: #008b8b;
     width: 16px;
     height: 16px;
     cursor: pointer;
@@ -616,8 +618,8 @@ button:hover {
 }
 
 .nav-tab.active {
-    color: #e8a44a;
-    border-bottom-color: #e8a44a;
+    color: #008b8b;
+    border-bottom-color: #008b8b;
 }
 
 #listening-room.hidden,
@@ -630,7 +632,7 @@ button:hover {
 }
 
 .section-eyebrow {
-    color: #e8a44a;
+    color: #008b8b;
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -674,8 +676,8 @@ button:hover {
 .vibe-button:hover,
 .vibe-button.active {
     background: #43321e;
-    color: #e8a44a;
-    border-color: #e8a44a;
+    color: #008b8b;
+    border-color: #008b8b;
 }
 
 #pick-record {
@@ -720,7 +722,7 @@ button:hover {
 }
 
 .vibe-result-card .vibe-rating {
-    color: #e8a44a;
+    color: #008b8b;
 }
 
 @media (max-width: 700px) {
@@ -777,12 +779,12 @@ button:hover {
 }
 
 .album-vibe-options label:has(input:checked) {
-    border-color: #e8a44a;
-    background: #43321e;
+    border-color: #008b8b;
+    background: #153838;
 }
 
 .album-vibe-options input {
-    accent-color: #e8a44a;
+    accent-color: #008b8b;
 }
 
 @media (max-width: 450px) {
@@ -830,15 +832,15 @@ button:hover {
 
 .favourites-heart input:checked + .heart-icon::before {
     content: "♥";
-    color: #e8a44a;
+    color: #008b8b;
 }
 
 .favourites-heart:hover .heart-icon::before {
-    color: #e8a44a;
+    color: #008b8b;
 }
 
 .favourites-heart input:focus-visible + .heart-icon {
-    outline: 2px solid #e8a44a;
+    outline: 2px solid #008b8b;
     outline-offset: 4px;
     border-radius: 3px;
 }
@@ -869,11 +871,11 @@ button:hover {
 }
 
 .add-favourite input:checked + .add-favourite-heart {
-    color: #e8a44a;
+    color: #008b8b;
 }
 
 .add-favourite input:focus-visible + .add-favourite-heart {
-    outline: 2px solid #e8a44a;
+    outline: 2px solid #008b8b;
     outline-offset: 3px;
     border-radius: 3px;
 }
@@ -901,7 +903,7 @@ button:hover {
 
 /* Shared heading layout for all three Crate tabs */
 .page-heading { min-width: 0; margin-bottom: 32px; }
-.page-heading .section-eyebrow { color: #e8a44a; font-size: 12px; font-weight: bold; letter-spacing: 2px; margin: 0 0 12px; }
+.page-heading .section-eyebrow { color: #008b8b; font-size: 12px; font-weight: bold; letter-spacing: 2px; margin: 0 0 12px; }
 .page-heading h2 { font-size: 32px; font-weight: 700; line-height: 1.2; margin: 0 0 16px; }
 .page-heading > p:last-child { color: #999; font-size: 16px; line-height: 1.5; margin: 0; }
 .collection-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 32px; }
@@ -911,4 +913,166 @@ button:hover {
   .collection-header { flex-direction: column; align-items: stretch; }
   .collection-actions { flex-wrap: wrap; justify-content: flex-start; }
   .page-heading h2 { font-size: 28px; }
+}
+
+
+/* MAIN TITLE - discog */
+h1 {
+    color: #008B8B;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+/* SUBHEADINGS */
+h2, h3 {
+    color: #b3b3b3;
+    font-weight: 600;
+}
+
+/* SUBTITLE - your personal album tracker */
+p {
+    color: #008B8B;
+}
+
+/* Main title */
+h1 {
+    color: #008B8B;
+}
+
+/* Subheadings */
+h2, h3 {
+    color: #008B8B;
+}
+
+/* Main Discog title */
+header h1 {
+    color: #008B8B !important;
+}
+
+
+/* ===== TEAL THEME ===== */
+
+:root {
+    --accent: #008B8B;
+    --primary: #008B8B;
+    --highlight: #008B8B;
+}
+
+/* Main title and headings */
+header h1,
+h1, h2, h3 {
+    color: #008B8B !important;
+}
+
+/* Buttons */
+button {
+    background-color: #008B8B;
+    border-color: #008B8B;
+}
+
+/* Button hover */
+button:hover {
+    background-color: #006666;
+    border-color: #006666;
+}
+
+/* Input focus */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #008B8B;
+    outline-color: #008B8B;
+}
+
+/* Links */
+a:hover {
+    color: #008B8B;
+}
+
+/* ===== CRATE COLOUR UPDATES ===== */
+
+/* Navigation tabs */
+.crate-navigation .nav-tab {
+    color: #008B8B !important;
+}
+
+/* Active tab underline */
+.crate-navigation .nav-tab.active {
+    color: #008B8B !important;
+    border-bottom-color: #008B8B !important;
+}
+
+/* Small MY COLLECTION label */
+.section-eyebrow {
+    color: #008B8B !important;
+}
+
+/* Main heading - Your record collection */
+.collection-header h1,
+.collection-header h2 {
+    color: #FFFFFF !important;
+}
+
+/* ===== CRATE RATINGS & FAVOURITES ===== */
+
+/* Album ratings and stars */
+.rating,
+.album-rating,
+.rating-stars,
+.stars {
+    color: #008B8B !important;
+}
+
+/* Favourite hearts */
+.favorite-btn,
+.favourite-btn,
+.favorite-toggle,
+.favourite-toggle,
+.heart-btn {
+    color: #008B8B !important;
+}
+
+/* Favourite icons */
+.favorite-btn svg,
+.favourite-btn svg,
+.favorite-toggle svg,
+.favourite-toggle svg,
+.heart-btn svg {
+    stroke: #008B8B !important;
+}
+
+/* Active favourite hearts */
+.favorite-btn.active svg,
+.favourite-btn.active svg,
+.favorited svg,
+.favourited svg {
+    fill: #008B8B !important;
+    stroke: #008B8B !important;
+}
+
+/* Clear Filters */
+.clear-filters,
+#clear-filters {
+    color: #008B8B !important;
+}
+/* ===== TEAL RATINGS & FAVOURITES ===== */
+
+/* Album ratings */
+.album-rating,
+.rating,
+.rating-value,
+.album-card .rating {
+    color: #008B8B !important;
+}
+
+/* Add to Favourites menu option */
+.album-menu button,
+.album-menu .favorite-btn,
+.album-menu .favourite-btn {
+    color: #008B8B;
+}
+
+/* Album titles in My Collection */
+#album-grid .album-card h3 {
+    color: #ffffff !important;
 }
