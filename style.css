@@ -1102,23 +1102,11 @@ a:hover {
     display: none !important;
 }
 
-/* Fix blue link text inside buttons on mobile */
-button a,
-button a:link,
-button a:visited,
-a.btn,
-a.btn:visited {
-    color: inherit !important;
-    text-decoration: none !important;
-}
-
-/* Stop iPhone from applying its default blue text */
-button {
-    -webkit-text-fill-color: currentColor;
-}
-
-/* Fix blue button text on iPhone */
-button {
-    color: #ffffff;
-    -webkit-text-fill-color: #ffffff;
+/* Force text inside teal buttons to white */
+button,
+button *,
+.btn-primary,
+.btn-primary * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
