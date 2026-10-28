@@ -1101,3 +1101,17 @@ a:hover {
 #collection-page:has(#rating-modal:not(.hidden)) > *:not(#rating-modal) {
     display: none !important;
 }
+
+/* Fix blue text on mobile */
+a,
+a:visited {
+    color: inherit;
+}
+
+/* Prevent iPhone from making detected text blue */
+a[x-apple-data-detectors],
+.apple-data-detectors,
+.apple-data-detectors a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
