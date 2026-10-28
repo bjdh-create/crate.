@@ -675,7 +675,7 @@ button:hover {
 
 .vibe-button:hover,
 .vibe-button.active {
-    background: #43321e;
+    background: #153838;
     color: #008b8b;
     border-color: #008b8b;
 }
@@ -685,7 +685,7 @@ button:hover {
 }
 
 #pick-record:disabled {
-    opacity: 0.45;
+    opacity: 0.45;  
     cursor: not-allowed;
 }
 
@@ -1075,4 +1075,29 @@ a:hover {
 /* Album titles in My Collection */
 #album-grid .album-card h3 {
     color: #ffffff !important;
+}
+
+/* Main headings on all three tabs */
+#collection-page .page-heading h2,
+#hunt-page .page-heading h2,
+#listening-room .page-heading h2 {
+    color: #FFFFFF !important;
+}
+
+/* Make album search and rating windows work on every tab */
+
+#collection-page:has(#search-modal:not(.hidden)) {
+    display: block !important;
+}
+
+#collection-page:has(#search-modal:not(.hidden)) > *:not(#search-modal) {
+    display: none !important;
+}
+
+#collection-page:has(#rating-modal:not(.hidden)) {
+    display: block !important;
+}
+
+#collection-page:has(#rating-modal:not(.hidden)) > *:not(#rating-modal) {
+    display: none !important;
 }
